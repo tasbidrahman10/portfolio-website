@@ -19,10 +19,10 @@ export default function Navbar() {
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-4' : 'py-8'}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 ${scrolled ? 'py-3 sm:py-4' : 'py-4 sm:py-8'}`}
     >
-      <div className={`max-w-7xl mx-auto px-6 h-16 flex items-center justify-between rounded-full transition-all duration-500 ${scrolled ? 'glass px-8' : ''}`}>
-        <a href="#" className="text-xl font-bold tracking-tight">
+      <div className={`max-w-7xl mx-auto h-14 sm:h-16 flex items-center justify-between rounded-full transition-all duration-500 ${scrolled ? 'glass px-4 sm:px-8' : ''}`}>
+        <a href="#" className="text-lg sm:text-xl font-bold tracking-tight">
           TASBID<span className="text-brand-purple">.</span>
         </a>
         
@@ -40,9 +40,10 @@ export default function Navbar() {
         
         <a 
           href="mailto:tasbidrahman555@gmail.com" 
-          className="px-6 py-2 bg-white text-black font-bold rounded-full text-sm hover:scale-105 transition-transform"
+          className="px-4 sm:px-6 py-2 bg-white text-black font-bold rounded-full text-xs sm:text-sm hover:scale-105 transition-transform"
         >
-          Work with me
+          <span className="hidden min-[360px]:inline">Work with me</span>
+          <span className="min-[360px]:hidden">Work</span>
         </a>
       </div>
     </motion.nav>

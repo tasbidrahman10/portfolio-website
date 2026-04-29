@@ -17,7 +17,7 @@ const EngineeringCard = ({ project }: { project: EngineeringProject }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="glass rounded-3xl overflow-hidden group border-white/5 hover:border-brand-blue/30 transition-all duration-500 bg-linear-to-b from-white/5 to-transparent"
+      className="glass rounded-2xl sm:rounded-3xl overflow-hidden group border-white/5 hover:border-brand-blue/30 transition-all duration-500 bg-linear-to-b from-white/5 to-transparent"
     >
       <div className="relative aspect-video overflow-hidden bg-black/20">
         <img 
@@ -32,12 +32,12 @@ const EngineeringCard = ({ project }: { project: EngineeringProject }) => {
         <div className="absolute inset-0 bg-linear-to-t from-dark-bg/90 via-dark-bg/20 to-transparent" />
 
         <div className="absolute bottom-6 left-6 right-6 pointer-events-none">
-           <h3 className="text-2xl font-bold mb-1 group-hover:text-brand-blue transition-colors">{project.title}</h3>
+           <h3 className="text-xl sm:text-2xl font-bold mb-1 group-hover:text-brand-blue transition-colors">{project.title}</h3>
            <p className="text-sm text-white/70 line-clamp-1">{project.oneLine}</p>
         </div>
       </div>
 
-      <div className="flex gap-3 overflow-x-auto px-6 pt-5 pb-1">
+      <div className="flex gap-3 overflow-x-auto px-4 sm:px-6 pt-4 sm:pt-5 pb-1">
         {project.thumbnails.map((thumbnail, idx) => (
           <button
             key={thumbnail}
@@ -58,7 +58,7 @@ const EngineeringCard = ({ project }: { project: EngineeringProject }) => {
         ))}
       </div>
       
-      <div className="p-8">
+      <div className="p-5 sm:p-8">
         <div className="flex flex-wrap gap-2 mb-6">
           {project.techStack.map((tech, idx) => (
             <span key={idx} className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-white/50 border border-white/10 uppercase tracking-wider">
@@ -98,16 +98,16 @@ const EngineeringCard = ({ project }: { project: EngineeringProject }) => {
 
 export default function Engineering() {
   return (
-    <section id="projects" className="py-24 px-6 max-w-7xl mx-auto">
-      <div className="mb-16">
+    <section id="projects" className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div className="mb-10 sm:mb-16">
         <span className="text-xs font-mono uppercase tracking-[0.3em] text-brand-blue mb-4 block">Projects</span>
-        <h2 className="text-4xl font-bold mb-4">Things I’ve Built</h2>
-        <p className="text-white/50 text-lg">Production platforms, capstone systems, and engineering projects — shipped and deployed.</p>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4">Things I’ve Built</h2>
+        <p className="text-white/50 text-base sm:text-lg">Production platforms, capstone systems, and engineering projects — shipped and deployed.</p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-8">
         {ENGINEERING_PROJECTS.map((project, idx) => (
-          <div key={project.id} className={idx === 0 ? 'md:col-span-2' : ''}>
+          <div key={project.id} className={idx === 0 ? 'lg:col-span-2' : ''}>
             <EngineeringCard project={project} />
           </div>
         ))}

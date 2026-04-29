@@ -30,21 +30,21 @@ const Counter = ({ value, label }: { value: number; label: string }) => {
   }, [isInView, value]);
 
   return (
-    <div ref={ref} className="text-center p-6 glass rounded-2xl">
-      <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">{count}+</div>
-      <div className="text-sm text-white/50 uppercase tracking-widest leading-tight">{label}</div>
+    <div ref={ref} className="text-center p-4 sm:p-6 glass rounded-2xl">
+      <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient mb-2">{count}+</div>
+      <div className="text-[11px] sm:text-sm text-white/50 uppercase tracking-wider sm:tracking-widest leading-tight">{label}</div>
     </div>
   );
 };
 
 export default function About() {
   return (
-    <section id="about" className="py-24 px-6 max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-2 gap-16 items-start">
+    <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
         <div>
           <span className="text-xs font-mono uppercase tracking-[0.3em] text-brand-purple mb-4 block">About Me</span>
-          <h2 className="text-4xl font-bold mb-8">AI Developer & Research Collaborator</h2>
-          <div className="space-y-6 text-lg text-white/70">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">AI Developer & Research Collaborator</h2>
+          <div className="space-y-5 sm:space-y-6 text-base sm:text-lg text-white/70">
             <p>
               I’m a final-year Computer Science student at North South University, Dhaka. 
               Working simultaneously as a developer who ships AI-powered systems and as a 

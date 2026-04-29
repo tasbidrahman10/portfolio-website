@@ -18,7 +18,7 @@ const ProjectCard = ({ project, index }: { project: ResearchProject; index: numb
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="glass rounded-3xl overflow-hidden p-8 md:col-span-2"
+      className="glass rounded-2xl sm:rounded-3xl overflow-hidden p-5 sm:p-8 lg:col-span-2"
     >
       <div className="flex flex-wrap gap-2 mb-6">
         {project.badges.map((badge, bIdx) => (
@@ -33,9 +33,9 @@ const ProjectCard = ({ project, index }: { project: ResearchProject; index: numb
         ))}
       </div>
       
-      <div className="grid lg:grid-cols-2 gap-12">
+      <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
         <div>
-          <h3 className="text-3xl font-bold mb-2">{project.title}</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold mb-2">{project.title}</h3>
           <p className="text-sm font-mono text-brand-purple mb-6">{project.acronym} · {project.collaboration}</p>
           
           <p className="text-white/70 mb-8 leading-relaxed">
@@ -51,7 +51,7 @@ const ProjectCard = ({ project, index }: { project: ResearchProject; index: numb
             ))}
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-3 sm:gap-4">
              {project.github && (
                <a href={project.github} target="_blank" className="flex items-center gap-2 text-sm font-semibold glass px-4 py-2 rounded-full hover:bg-white/10 transition-all">
                  <Github className="w-4 h-4" /> Code
@@ -124,14 +124,14 @@ const ProjectCard = ({ project, index }: { project: ResearchProject; index: numb
 
 export default function Research() {
   return (
-    <section id="research" className="py-24 px-6 max-w-7xl mx-auto">
-      <div className="mb-16">
+    <section id="research" className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div className="mb-10 sm:mb-16">
         <span className="text-xs font-mono uppercase tracking-[0.3em] text-brand-purple mb-4 block">Research</span>
-        <h2 className="text-4xl font-bold mb-4">Active Research</h2>
-        <p className="text-white/50 text-lg">Peer-review-targeted ML research in federated learning, quantum systems, and AI for healthcare and security.</p>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4">Active Research</h2>
+        <p className="text-white/50 text-base sm:text-lg">Peer-review-targeted ML research in federated learning, quantum systems, and AI for healthcare and security.</p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-8">
         {RESEARCH_PROJECTS.map((project, idx) => (
           <ProjectCard key={project.id} project={project} index={idx} />
         ))}

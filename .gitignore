@@ -2,6 +2,7 @@ node_modules/
 build/
 dist/
 coverage/
+tmp-edge-mobile-profile/
 *.zip
 tasbid_portfolio_phase1_copy.md
 .DS_Store

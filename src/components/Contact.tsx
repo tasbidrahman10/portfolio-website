@@ -15,16 +15,16 @@ export default function Contact() {
   const [isTypeOpen, setIsTypeOpen] = useState(false);
 
   return (
-    <section id="contact" className="py-24 px-6 max-w-7xl mx-auto">
-      <div className="mb-16">
+    <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div className="mb-10 sm:mb-16">
         <span className="text-xs font-mono uppercase tracking-[0.3em] text-brand-purple mb-4 block">Contact</span>
-        <h2 className="text-4xl font-bold mb-4">Let’s Work Together</h2>
-        <p className="text-white/50 text-lg">Three kinds of people reach out. All three are welcome.</p>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4">Let’s Work Together</h2>
+        <p className="text-white/50 text-base sm:text-lg">Three kinds of people reach out. All three are welcome.</p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 mb-24">
+      <div className="grid md:grid-cols-3 gap-5 sm:gap-8 mb-16 sm:mb-24">
         {/* Recruiter */}
-        <div className="p-8 glass rounded-3xl border-white/5 hover:border-brand-purple/30 transition-all group">
+        <div className="p-5 sm:p-8 glass rounded-2xl sm:rounded-3xl border-white/5 hover:border-brand-purple/30 transition-all group">
            <h3 className="text-xl font-bold mb-4">For Recruiters</h3>
            <p className="text-sm text-white/60 mb-8 leading-relaxed">
              I’m open to full-time and contractual roles in AI/ML engineering and full-stack development. 
@@ -40,7 +40,7 @@ export default function Contact() {
         </div>
 
         {/* Professor / Researcher */}
-        <div className="p-8 glass rounded-3xl border-white/5 hover:border-brand-blue/30 transition-all group">
+        <div className="p-5 sm:p-8 glass rounded-2xl sm:rounded-3xl border-white/5 hover:border-brand-blue/30 transition-all group">
            <h3 className="text-xl font-bold mb-4">For Researchers</h3>
            <p className="text-sm text-white/60 mb-8 leading-relaxed">
              Interested in collaboration on federated learning, quantum ML, or privacy-preserving 
@@ -55,7 +55,7 @@ export default function Contact() {
         </div>
 
         {/* Freelance */}
-        <div className="p-8 glass rounded-3xl border-white/5 hover:border-orange-500/30 transition-all group">
+        <div className="p-5 sm:p-8 glass rounded-2xl sm:rounded-3xl border-white/5 hover:border-orange-500/30 transition-all group">
            <h3 className="text-xl font-bold mb-4">For Clients</h3>
            <p className="text-sm text-white/60 mb-8 leading-relaxed">
              Need an AI-powered platform, full-stack web application, or automation pipeline built? 
@@ -72,9 +72,9 @@ export default function Contact() {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-24 py-24 border-t border-white/5">
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 py-16 sm:py-24 border-t border-white/5">
          <div>
-            <h3 className="text-3xl font-bold mb-8">Drop a line</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-8">Drop a line</h3>
             <form className="space-y-6">
                <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -158,7 +158,7 @@ export default function Contact() {
                
                <div>
                   <h4 className="text-xs font-mono text-white/40 uppercase tracking-widest mb-6">Email</h4>
-                  <a href={PROFILE_LINKS.email} className="text-2xl font-medium hover:text-brand-purple transition-colors">
+                  <a href={PROFILE_LINKS.email} className="text-lg sm:text-2xl font-medium hover:text-brand-purple transition-colors break-all">
                     tasbidrahman555@gmail.com
                   </a>
                </div>
