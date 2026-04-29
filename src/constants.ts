@@ -5,7 +5,7 @@
 
 import { Stat, ResearchProject, EngineeringProject } from './types.ts';
 
-const image = (filename: string) => new URL(`../images/${filename}`, import.meta.url).href;
+const image = (filename: string) => `${import.meta.env.BASE_URL}images/${filename}`;
 
 export const PROFILE_LINKS = {
   github: "https://github.com/tasbidrahman10",
