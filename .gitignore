@@ -1,0 +1,11 @@
+node_modules/
+build/
+dist/
+coverage/
+images/
+*.zip
+tasbid_portfolio_phase1_copy.md
+.DS_Store
+*.log
+.env*
+!.env.example
