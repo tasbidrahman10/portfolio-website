@@ -37,7 +37,7 @@ export default function TwoSpectrums() {
           
           <div className="space-y-4 mb-12">
             <div className="flex flex-wrap gap-2">
-               {["AI Apps", "Full-stack", "SaaS", "n8n Automation", "APIs"].map(tag => (
+               {["AI Apps", "Full-stack", "SaaS", "ML Pipelines", "APIs"].map(tag => (
                  <span key={tag} className="text-xs font-mono px-2 py-1 rounded bg-brand-blue/10 text-brand-blue border border-brand-blue/20">
                    {tag}
                  </span>
@@ -67,15 +67,15 @@ export default function TwoSpectrums() {
           </div>
           
           <h3 className="text-3xl font-bold mb-6">Researcher</h3>
-          <p className="text-white/80 font-medium text-lg mb-4">I research what makes systems smarter.</p>
+          <p className="text-white/80 font-medium text-lg mb-4">I research how systems fail.</p>
           <p className="text-white/60 mb-8">
-            Privacy-preserving ML, quantum-classical hybrid architectures, and federated learning 
-            for medical IoT security — targeting peer-reviewed Q1 publication.
+            AI safety from the systems side: how ML breaks under adversarial pressure, distribution
+            shift, and decentralized training, and how to measure and catch those failures.
           </p>
-          
+
           <div className="space-y-4 mb-12">
             <div className="flex flex-wrap gap-2">
-               {["Split Federated Learning", "Quantum Kernels", "IoMT", "LLM Fine-tuning"].map(tag => (
+               {["AI Safety", "Federated Learning", "Distributed Training", "Robustness Evaluation"].map(tag => (
                  <span key={tag} className="text-xs font-mono px-2 py-1 rounded bg-brand-purple/10 text-brand-purple border border-brand-purple/20">
                    {tag}
                  </span>

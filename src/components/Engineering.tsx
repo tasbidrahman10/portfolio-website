@@ -102,7 +102,7 @@ export default function Engineering() {
       <div className="mb-10 sm:mb-16">
         <span className="text-xs font-mono uppercase tracking-[0.3em] text-brand-blue mb-4 block">Projects</span>
         <h2 className="text-3xl sm:text-4xl font-bold mb-4">Things I’ve Built</h2>
-        <p className="text-white/50 text-base sm:text-lg">Production platforms, capstone systems, and engineering projects — shipped and deployed.</p>
+        <p className="text-white/50 text-base sm:text-lg">Completed ML projects, production platforms, and capstone systems.</p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8">

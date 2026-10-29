@@ -43,22 +43,39 @@ export default function About() {
       <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
         <div>
           <span className="text-xs font-mono uppercase tracking-[0.3em] text-brand-purple mb-4 block">About Me</span>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">AI Developer & Research Collaborator</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">AI Safety Researcher, Systems Side</h2>
           <div className="space-y-5 sm:space-y-6 text-base sm:text-lg text-white/70">
             <p>
-              I’m a final-year Computer Science student at North South University, Dhaka. 
-              Working simultaneously as a developer who ships AI-powered systems and as a 
-              researcher pushing the boundaries of privacy-preserving machine learning.
+              I’m a final-year Computer Science student at North South University in Dhaka.
+              My research is in AI safety, approached from the systems side. I study how machine
+              learning systems fail under adversarial pressure, distribution shift, and decentralized
+              training, and how to measure and catch those failures before they matter.
             </p>
             <p>
-              My current work sits at the intersection of quantum computing and federated learning: 
-              a multi-university collaboration across NSU, BUET, and KUET targeting a Q1 journal 
-              publication on hybrid classical-quantum split federated learning for IoMT security.
+              Most of my work is in distributed and federated learning, where robustness problems
+              are easy to miss. In a multi-university collaboration across NSU, BUET, and KUET, I work
+              on split federated learning for intrusion detection. That includes building attack
+              simulations and detection mechanisms, then stress-testing them against adversaries
+              designed to slip past them. Separately, I’m building PoolTrain, which pools GPUs across
+              machines to train a single model. With it I’m probing where low-communication training
+              methods like DiLoCo break down.
             </p>
             <p>
-              Outside research, I build full-stack platforms, automation pipelines, and AI systems 
-              for clients and personal projects - and I’m open to both freelance work and 
-              research collaboration.
+              Recently both projects have led me to the same unglamorous problem: BatchNorm. Its
+              running statistics quietly assume one well-mixed stream of data. That assumption falls
+              apart when data is split across clients, or when workers train separately and merge
+              later. I’m exploring different ways of handling it in both settings. It has reminded me
+              that a lot of robustness lives in details nobody looks at.
+            </p>
+            <p>
+              The part of this work I care about most is evaluation: designing tests that try to break
+              a system instead of confirming it works. I’m especially curious whether the blind spots I
+              find in federated defenses also appear in LLM safety tooling, such as per-turn classifiers
+              that a patient adversary can work around.
+            </p>
+            <p>
+              I still build full-stack platforms, AI pipelines, and automation systems. I’m open to
+              research collaborations, AI safety programs, and engineering roles where rigor matters.
             </p>
           </div>
           
@@ -74,7 +91,7 @@ export default function About() {
                 <span className="text-sm font-semibold text-white/90 uppercase tracking-widest">Availability</span>
              </div>
              <p className="text-white/60 text-sm">
-                Open to AI/ML roles · Research collaboration · Freelance projects
+                Research collaborations · AI safety programs · Engineering roles
              </p>
           </div>
         </div>

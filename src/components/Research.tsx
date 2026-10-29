@@ -42,14 +42,29 @@ const ProjectCard = ({ project, index }: { project: ResearchProject; index: numb
             {project.abstract}
           </p>
           
-          <div className="grid sm:grid-cols-2 gap-4 mb-8">
-            {project.highlights.map((highlight, hIdx) => (
-              <div key={hIdx} className="flex gap-3 items-start">
-                 <div className="w-1.5 h-1.5 rounded-full bg-brand-purple shrink-0 mt-1.5" />
-                 <span className="text-sm text-white/60">{highlight}</span>
-              </div>
-            ))}
+          <div className="space-y-3 mb-8">
+            {project.highlights.map((highlight, hIdx) => {
+              const [label, ...rest] = highlight.split(': ');
+              return (
+                <div key={hIdx} className="flex gap-3 items-start">
+                   <div className="w-1.5 h-1.5 rounded-full bg-brand-purple shrink-0 mt-1.5" />
+                   <span className="text-sm text-white/60 leading-relaxed">
+                     {rest.length ? <><strong className="font-semibold text-white/85">{label}:</strong> {rest.join(': ')}</> : highlight}
+                   </span>
+                </div>
+              );
+            })}
           </div>
+
+          {project.stack && (
+            <div className="flex flex-wrap gap-2 mb-8">
+              {project.stack.map((tech) => (
+                <span key={tech} className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-white/50 border border-white/10 uppercase tracking-wider">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
 
           <div className="flex flex-wrap gap-3 sm:gap-4">
              {project.github && (
@@ -128,7 +143,7 @@ export default function Research() {
       <div className="mb-10 sm:mb-16">
         <span className="text-xs font-mono uppercase tracking-[0.3em] text-brand-purple mb-4 block">Research</span>
         <h2 className="text-3xl sm:text-4xl font-bold mb-4">Active Research</h2>
-        <p className="text-white/50 text-base sm:text-lg">Peer-review-targeted ML research in federated learning, quantum systems, and AI for healthcare and security.</p>
+        <p className="text-white/50 text-base sm:text-lg">AI safety from the systems side: how distributed and federated training fail under adversarial pressure, and how to catch it.</p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8">

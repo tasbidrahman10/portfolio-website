@@ -16,6 +16,7 @@ export interface ResearchProject {
   collaboration: string;
   abstract: string;
   highlights: string[];
+  stack?: string[];
   poster?: string;
   github?: string;
 }

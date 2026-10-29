@@ -43,8 +43,8 @@ export default function Contact() {
         <div className="p-5 sm:p-8 glass rounded-2xl sm:rounded-3xl border-white/5 hover:border-brand-blue/30 transition-all group">
            <h3 className="text-xl font-bold mb-4">For Researchers</h3>
            <p className="text-sm text-white/60 mb-8 leading-relaxed">
-             Interested in collaboration on federated learning, quantum ML, or privacy-preserving 
-             systems for healthcare and IoT? Let’s talk — I’m actively publishing.
+             Interested in collaboration on AI safety, robustness evaluation, or federated and
+             distributed training? Let’s talk.
            </p>
            <a 
              href={PROFILE_LINKS.email}

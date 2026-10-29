@@ -18,7 +18,7 @@ export default function Hero() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass mb-6">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-xs font-mono text-white/70">Available for Research & Freelance</span>
+            <span className="text-xs font-mono text-white/70">Open to Research & AI Safety Programs</span>
           </div>
           
           <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter mb-4 leading-[0.92]">

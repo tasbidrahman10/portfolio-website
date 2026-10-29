@@ -11,64 +11,82 @@ export const PROFILE_LINKS = {
   github: "https://github.com/tasbidrahman10",
   linkedin: "https://www.linkedin.com/in/tasbid-a-rahman-",
   email: "mailto:tasbidrahman555@gmail.com",
-  cv: new URL("../CV.pdf", import.meta.url).href,
+  cv: new URL("../Tasbid_Al_Rahman_CV.pdf", import.meta.url).href,
   fiverr: "https://www.fiverr.com/s/bdQy1k1",
   upwork: "https://www.upwork.com/freelancers/~010ea49a94884bffb5?mp_source=share",
 };
 
 export const HERO_DATA = {
   name: "Tasbid Al Rahman",
-  role: "AI Systems Developer & ML Researcher",
-  tagline: "Building production systems. Researching what makes them smarter.",
+  role: "AI Safety Researcher · ML Systems",
+  tagline: "Studying how machine learning systems fail, and building the tests that catch it.",
   photo: image("me.png"),
   location: "North South University · Dhaka, Bangladesh · Final Year CSE",
 };
 
 export const STATS: Stat[] = [
-  { value: 3, label: "Research Projects Active" },
+  { value: 2, label: "Research Projects Active" },
   { value: 3, label: "Universities Collaborating" },
   { value: 5, label: "Production Projects Shipped" },
-  { value: 1, label: "Q1 Journal In Progress" },
+  { value: 1, label: "Journal Manuscript Complete" },
 ];
 
 export const RESEARCH_PROJECTS: ResearchProject[] = [
   {
-    id: "hcqsfl",
-    title: "Hybrid Classical-Quantum Split Federated Learning for IoMT Intrusion Detection",
-    acronym: "HCQ-SFL-IR",
-    badges: ["Q1 Journal Target", "In Progress", "Multi-university"],
+    id: "robust-bn-sfl",
+    title: "Robust Batch Normalization in Federated Learning Against Malicious Client Updates on Healthcare Data",
+    acronym: "Robust BN-SFL",
+    badges: ["In Progress", "AI Security", "Multi-university"],
     collaboration: "NSU × BUET × KUET",
-    abstract: "A privacy-preserving security framework for medical IoT devices that combines split learning, federated aggregation, and a quantum kernel layer for intrusion detection. Client encoder models process raw sensor data locally and share only compact 64-dimensional activation vectors with the server — raw patient data never leaves the device. Baseline models achieve ROC-AUC scores of 0.955–0.960 across four real-world datasets.",
+    abstract: "A security-focused Split Federated Learning framework investigating the reliability of distributed deep learning under heterogeneous data and malicious client updates. Using an ICU mortality-prediction task based on MIMIC-IV, this research examines how Batch Normalization (BN) statistics can become corrupted during federated aggregation, potentially making global models unusable. We implement and compare multiple BN-handling policies, introduce model-state validity checks, and evaluate their behavior under full and partial client participation. The goal is to understand the limitations of existing aggregation strategies and develop evidence-driven approaches to more reliable and robust federated learning.",
     highlights: [
-      "Architecture: ClientEncoder (38 → 128 → 64-dim) + server-side aggregation",
-      "Privacy guarantee: Only activation vectors leave client devices",
-      "Quantum layer: PennyLane kernel integration for intrusion classification",
-      "Training: 20 federated rounds · pos_weight=10.0 for class imbalance",
-      "Datasets: WESAD · PAMAP2 · MIMIC-IV · TON-IoT"
+      "Architecture: Split Federated Learning with client-side encoders and a shared server-side prediction head.",
+      "Core focus: Batch Normalization state validity, statistical aggregation, and resilience to malicious model updates.",
+      "BN policies: Comparative evaluation of legacy aggregation, a matched averaged-buffer control, local BN statistics, and fully local BN.",
+      "Security mechanisms: Model-state validation checks for malformed tensors, non-finite values, negative running variances, and invalid counters.",
+      "Experimental design: Controlled comparisons under full and partial client participation, using three random seeds and matched clean baselines.",
+      "Dataset: MIMIC-IV v3.1 for in-hospital mortality prediction across ten ICU-derived silos.",
+      "Ongoing research: Evaluating BN-buffer manipulation and model-weight poisoning attacks to identify remaining vulnerabilities and guide the design of more robust aggregation mechanisms.",
     ],
-    poster: image("hcqsfl.png"),
-    github: "https://github.com/tasbidrahman10/Hybrid-Classical-Quantum-Split-Federated-Learning"
+    poster: image("robust-bn-sfl.png"),
+    github: "https://github.com/hassin070/mimic-sfl"
   },
   {
-    id: "efsm",
-    title: "Empathetic Full-Duplex Speech LLM (EFSM)",
-    acronym: "EFSM",
-    badges: ["In Progress", "Deep Learning Research", "CSE465"],
-    collaboration: "Research Project",
-    abstract: "Fine-tuning Qwen2.5-Omni-7B on EmpatheticDialogues using QLoRA (4-bit, rank 16) to produce measurably more empathetic responses in real-time voice conversations. Only the 7B language backbone is trained - Whisper audio encoder and speech decoder remain frozen — keeping training feasible on constrained hardware.",
+    id: "pooltrain",
+    title: "PoolTrain: BatchNorm-Aware Low-Communication Training for Consumer GPU Pools",
+    acronym: "PoolTrain",
+    badges: ["In Progress", "Senior Capstone", "Distributed Training"],
+    collaboration: "Senior capstone research (CSE499) · North South University",
+    abstract: "Low-communication methods like Google DeepMind’s DiLoCo make it possible to train one model across poorly connected machines: each worker trains locally for many steps, and the copies are merged occasionally with an outer Nesterov-momentum step. These methods and their open-source implementations were built and tested almost entirely on language models, which have no BatchNorm running statistics. This project shows that on the BatchNorm-based vision models that most student and small-lab work relies on, existing DiLoCo-style pipelines mishandle these statistics. We are building PoolTrain, a platform that lets small groups pool their own GPUs over home internet and handles BatchNorm statistics correctly.",
     highlights: [
-      "Model: Qwen2.5-Omni-7B · QLoRA 4-bit quantization, rank 16",
-      "Evaluation: EPITOME framework (LLM-graded 0–6)",
-      "Metrics: WER on IEMOCAP/RAVDESS",
-      "Human study: Likert-scale rating across 20 audio samples",
-      "Framework: Gradio · EPITOME"
+      "Identified an untested failure mode: With DiLoCo’s standard outer settings (learning rate 0.7, momentum 0.9), the first merge overshoots the workers’ average by 33%. Any BatchNorm running variance that drops by more than about 75% in one round is pushed below zero, making the model’s predictions invalid, even when every worker is honest.",
+      "Audited real implementations: OpenDiLoCo and PyTorch’s torchft apply the outer step to parameters only, so BatchNorm buffers are never synchronized and merged weights are paired with stale statistics.",
+      "Controlled experiments: 4 simulated DiLoCo workers, ResNet-18, 40 rounds, 5 buffer-handling strategies, 3 seeds each.",
+      "CIFAR-10 (15 runs): Momentum-merged statistics went negative and made the model unusable for the first 3–4 rounds in 3 of 3 seeds, while every worker submitted valid values. The plain-averaging control never failed.",
+      "CIFAR-10: The default used by existing tools (statistics never synchronized) finished lowest in every seed, 1.6–2.4 points below recomputing statistics after each merge.",
+      "Tiny ImageNet (200 classes, 64×64, in progress): The first seed reproduces the early-round failure, with up to 37 negative variances and 0% accuracy in rounds 0–2.",
+      "Positioning: Connects the DiLoCo family to prior work on outer momentum (SlowMo), BatchNorm in federated learning (FedBN, FixBN), and BatchNorm recalibration after weight averaging (SWA, REPAIR).",
+      "System: A coordinator–client platform that pools members’ GPUs over home internet. It merges with correct BatchNorm handling, relays all traffic through a coordinator to get around ISP NAT, and tolerates workers dropping out during power cuts.",
+      "Engineering: The whole dataset held on the GPU with GPU-side augmentation, mixed-precision training, and checkpoint/resume that exactly reproduces uninterrupted runs on free Colab and Kaggle GPUs.",
     ],
-    poster: image("efsm.png"),
-    github: "https://github.com/tasbidrahman10/empathetic-voice-llm"
+    stack: ["PyTorch", "Python", "FastAPI", "PostgreSQL / Supabase", "Docker", "Tailscale", "Next.js / TypeScript"],
+    poster: image("pooltrain.png"),
+    github: "https://github.com/tasbidrahman10/pool-train"
   }
 ];
 
 export const ENGINEERING_PROJECTS: EngineeringProject[] = [
+  {
+    id: "efsm",
+    title: "Empathetic Full-Duplex Speech LLM (EFSM)",
+    oneLine: "A fine-tuned speech LLM that gives measurably more empathetic responses in real-time voice conversations.",
+    longDescription: "Fine-tuned Qwen2.5-Omni-7B on EmpatheticDialogues using QLoRA (4-bit, rank 16). Only the 7B language backbone was trained; the Whisper audio encoder and speech decoder stayed frozen, which kept training feasible on constrained hardware. Evaluated with EPITOME empathy scoring (0–6), word error rate on IEMOCAP and RAVDESS, and a human rating study across 20 audio samples.",
+    techStack: ["Python", "Qwen2.5-Omni-7B", "QLoRA", "Whisper", "Gradio", "EPITOME"],
+    links: { github: "https://github.com/tasbidrahman10/empathetic-voice-llm" },
+    thumbnails: [
+      image("efsm.png"),
+    ]
+  },
   {
     id: "zoco",
     title: "Zoco",
@@ -115,19 +133,19 @@ export const ENGINEERING_PROJECTS: EngineeringProject[] = [
 
 export const SKILLS = [
   {
-    category: "AI / ML / Research",
-    skills: ["PyTorch", "scikit-learn", "Federated Learning", "Quantum ML", "PennyLane", "Qiskit", "NumPy", "Pandas", "Matplotlib", "SciPy"]
+    category: "AI / ML Research",
+    skills: ["PyTorch", "scikit-learn", "Federated & Split Learning", "Distributed Training (DiLoCo)", "Robustness Evaluation", "LLM Fine-tuning (QLoRA)", "NumPy", "Pandas", "Matplotlib"]
   },
   {
     category: "Web / Backend",
-    skills: ["Next.js 14", "Node.js", "Express.js", "REST APIs", "Prisma ORM", "NextAuth.js", "PHP"]
+    skills: ["Next.js", "Node.js", "Express.js", "FastAPI", "REST APIs", "Prisma ORM", "NextAuth.js"]
   },
   {
     category: "Databases & Infrastructure",
-    skills: ["PostgreSQL", "MySQL", "Supabase", "Vercel", "Cloudinary", "Git"]
+    skills: ["PostgreSQL", "MySQL", "Supabase", "Docker", "Tailscale", "Vercel", "Git"]
   },
   {
-    category: "Automation & Languages",
-    skills: ["n8n", "Python", "TypeScript", "JavaScript", "HTML / CSS"]
+    category: "Languages",
+    skills: ["Python", "TypeScript", "JavaScript", "HTML / CSS"]
   }
 ];
