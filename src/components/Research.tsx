@@ -84,12 +84,12 @@ const ProjectCard = ({ project, index }: { project: ResearchProject; index: numb
         </div>
 
         {project.poster && (
-          <div className="relative group overflow-hidden rounded-2xl cursor-zoom-in bg-black/30" onClick={() => setIsModalOpen(true)}>
+          <div className="relative group overflow-hidden rounded-2xl cursor-zoom-in bg-black/30 self-start" onClick={() => setIsModalOpen(true)}>
              <img 
                src={project.poster} 
                alt={project.title} 
                referrerPolicy="no-referrer"
-               className="w-full h-full max-h-[540px] object-contain transition-transform duration-700 group-hover:scale-105"
+               className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
                onError={(e) => {
                  (e.target as HTMLImageElement).src = index === 0 
                   ? "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=800" 
